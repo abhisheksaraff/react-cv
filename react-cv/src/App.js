@@ -29,8 +29,10 @@ class App extends Component {
   editName(e) {
     e.preventDefault();
 
+    let tempName = e.target.value;
+
     this.setState({
-      name: e.target.value,
+      name: tempName,
       contact: this.state.contact,
       experience: this.state.experience,
       skills: this.state.skills,
@@ -42,9 +44,17 @@ class App extends Component {
   editContact(e) {
     e.preventDefault();
 
+    let tempContact = {
+      phone: this.state.contact.phone,
+      email: this.state.contact.email,
+      onlineProfile: this.state.contact.onlineProfile,
+    };
+
+    tempContact[e.target.name] = e.target.value;
+
     this.setState({
       name: this.state.name,
-      contact: e.target.value,
+      contact: tempContact,
       experience: this.state.experience,
       skills: this.state.skills,
       education: this.state.education,
@@ -81,12 +91,22 @@ class App extends Component {
   editEducation(e) {
     e.preventDefault();
 
+    let tempEducation = {
+      institution: this.state.education.institution,
+      graduationDate: this.state.education.graduationDate,
+      description: this.state.education.description,
+      city: this.state.education.city,
+      state: this.state.education.state,
+    };
+
+    tempEducation[e.target.name] = e.target.value;
+
     this.setState({
       name: this.state.name,
       contact: this.state.contact,
       experience: this.state.experience,
       skills: this.state.skills,
-      education: e.target.value,
+      education: tempEducation,
       awards: this.state.awards,
     });
   }

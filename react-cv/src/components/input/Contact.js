@@ -8,10 +8,18 @@ class Contact extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onChange={this.props.setContact}>
           <label>
-            Contact :
-            <input type="text" onChange={this.props.setContact} />
+            Phone Number :
+            <input type="text" name="phone"/>
+          </label>
+          <label>
+            Email :
+            <input type="text" name="email"/>
+          </label>
+          <label>
+            Link to Profile :
+            <input type="text" name="onlineProfile"/>
           </label>
         </form>
       </div>
