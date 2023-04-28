@@ -28,10 +28,14 @@ class Contact extends Component {
             this.props.contact.onlineProfile !== undefined &&
             this.props.contact.onlineProfile !== "")) && <> | </>}
 
-        <a rel="noopener noreferrer" target="_blank" href={`https:\\${this.props.contact.onlineProfile}`}>
+        {/* opens profileLink in a new window */}
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href={`https:\\${this.props.contact.onlineProfile}`}
+        >
           {this.props.contact.onlineProfile}
         </a>
-
       </div>
     );
   }
