@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Location from "./Location";
 
 class Education extends Component {
   constructor(props) {
@@ -8,18 +9,20 @@ class Education extends Component {
   render() {
     return (
       <div>
+        
         <div>
           {this.props.education.institution}{" "}
           {this.props.education.graduationDate}
         </div>
+        
         <div>
           {this.props.education.description}
-          {this.props.education.city}
-
-          {/* renders , if city and state are not undefined/empty */}
-          {(this.props.education.city !== undefined && this.props.education.city !== "" && this.props.education.state !== undefined && this.props.education.state !== "" ) && <>, </>}
           
-          {this.props.education.state}
+          <Location
+            city={this.props.education.city}
+            state={this.props.education.state}
+          />
+        
         </div>
       </div>
     );
