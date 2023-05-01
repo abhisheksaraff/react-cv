@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import uniqid from "uniqid";
+//import uniqid from "uniqid";
 
 import Form from "./components/input/Form";
 import CV from "./components/output/CV";
