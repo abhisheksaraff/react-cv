@@ -26,6 +26,8 @@ class App extends Component {
     this.setAwards = this.editAwards.bind(this);
   }
 
+
+  //setter functions
   editName(e) {
     e.preventDefault();
 
