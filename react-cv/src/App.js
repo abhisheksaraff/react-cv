@@ -116,13 +116,21 @@ class App extends Component {
   editAwards(e) {
     e.preventDefault();
 
+    let tempAward = {
+      name: this.state.awards.name,
+      institution: this.state.awards.institution,
+      date: this.state.awards.date,
+    };
+
+    tempAward[e.target.name] = e.target.value;
+
     this.setState({
       name: this.state.name,
       contact: this.state.contact,
       experience: this.state.experience,
       skills: this.state.skills,
       education: this.state.education,
-      awards: e.target.value,
+      awards: tempAward,
     });
   }
 

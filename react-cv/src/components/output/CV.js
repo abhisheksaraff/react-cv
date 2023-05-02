@@ -14,8 +14,6 @@ class CV extends Component {
 
   render() {
 
-    console.log(this.props.cv);
-
     return (
       <div>
         <Name name={this.props.cv.name} />

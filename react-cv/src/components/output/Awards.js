@@ -9,9 +9,18 @@ class Awards extends Component {
   render() {
     return (
       <div>
-        <div>{this.props.awards.name}</div>
-        <div>{this.props.awards.institution}</div>
-        <div>{this.props.awards.date}</div>
+        <div>
+          {this.props.awards.name}
+
+          {this.props.awards.name !== undefined &&
+            this.props.awards.name !== "" &&
+            this.props.awards.institution !== null &&
+            this.props.awards.institution !== "" && <> | </>}
+
+          {this.props.awards.institution}
+          <> </>
+          {this.props.awards.date}
+        </div>
       </div>
     );
   }
