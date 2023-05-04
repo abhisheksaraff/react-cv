@@ -8,7 +8,7 @@ class Awards extends Component {
   render() {
     return (
       <div>
-        <form onChange={this.props.setAwards}>
+        <form onSubmit={this.props.setAwards}>
           <label>
             Name :
             <input type="text" name="name" />
@@ -21,6 +21,7 @@ class Awards extends Component {
             Date :
             <input type="text" name="date" />
           </label>
+          <button type="submit">Add</button>
         </form>
       </div>
     );

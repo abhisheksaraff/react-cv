@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import uniqid from "uniqid";
+import uniqid from "uniqid";
 
 import Form from "./components/input/Form";
 import CV from "./components/output/CV";
@@ -18,17 +18,16 @@ class App extends Component {
       awards: [], // {[ [name: "", institution: "", date: ""], ...]}
     };
 
-    this.setName = this.editName.bind(this);
-    this.setContact = this.editContact.bind(this);
-    this.setExperience = this.editExperience.bind(this);
-    this.setSkills = this.editSkills.bind(this);
-    this.setEducation = this.editEducation.bind(this);
-    this.setAwards = this.editAwards.bind(this);
+    this.setName = this.addName.bind(this);
+    this.setContact = this.addContact.bind(this);
+    this.setExperience = this.addExperience.bind(this);
+    this.setSkills = this.addSkills.bind(this);
+    this.setEducation = this.addEducation.bind(this);
+    this.setAwards = this.addAwards.bind(this);
   }
 
-
   //setter functions
-  editName(e) {
+  addName(e) {
     e.preventDefault();
 
     let tempName = e.target.value;
@@ -43,7 +42,7 @@ class App extends Component {
     });
   }
 
-  editContact(e) {
+  addContact(e) {
     e.preventDefault();
 
     let tempContact = {
@@ -64,7 +63,7 @@ class App extends Component {
     });
   }
 
-  editExperience(e) {
+  addExperience(e) {
     e.preventDefault();
 
     this.setState({
@@ -77,7 +76,7 @@ class App extends Component {
     });
   }
 
-  editSkills(e) {
+  addSkills(e) {
     e.preventDefault();
 
     this.setState({
@@ -90,7 +89,7 @@ class App extends Component {
     });
   }
 
-  editEducation(e) {
+  addEducation(e) {
     e.preventDefault();
 
     let tempEducation = {
@@ -113,16 +112,18 @@ class App extends Component {
     });
   }
 
-  editAwards(e) {
+  addAwards(e) {
     e.preventDefault();
-
+    /*
     let tempAward = {
+      id: uniqid(),
       name: this.state.awards.name,
       institution: this.state.awards.institution,
       date: this.state.awards.date,
     };
 
     tempAward[e.target.name] = e.target.value;
+    
 
     this.setState({
       name: this.state.name,
@@ -132,6 +133,22 @@ class App extends Component {
       education: this.state.education,
       awards: tempAward,
     });
+
+    */
+    // {[ [name: "", institution: "", date: ""], ...]}
+    this.setState({
+      awards: [
+        ...this.state.awards,
+        {
+          id: uniqid(),
+          name: e.target.name.value,
+          institution: e.target.institution.value,
+          date: e.target.date.value
+        },
+      ],
+    });
+
+    e.target.reset();
   }
 
   render() {

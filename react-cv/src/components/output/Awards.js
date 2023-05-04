@@ -6,22 +6,34 @@ class Awards extends Component {
     super(props);
   }
 
+  addPipeline(name, institution) {
+    if (
+      name !== undefined &&
+      name !== "" &&
+      institution !== null &&
+      institution !== ""
+    )
+      return true;
+    return false;
+  }
+
   render() {
     return (
-      <div>
-        <div>
-          {this.props.awards.name}
+      <ul>
+        {this.props.awards.map((award) => {
+          return (
+            <li key={award.id}>
+              {award.name}
 
-          {this.props.awards.name !== undefined &&
-            this.props.awards.name !== "" &&
-            this.props.awards.institution !== null &&
-            this.props.awards.institution !== "" && <> | </>}
+              {this.addPipeline(award.name, award.institution) && <> | </>}
 
-          {this.props.awards.institution}
-          <> </>
-          {this.props.awards.date}
-        </div>
-      </div>
+              {award.institution}
+              <> </>
+              {award.date}
+            </li>
+          );
+        })}
+      </ul>
     );
   }
 }
