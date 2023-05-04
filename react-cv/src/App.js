@@ -12,10 +12,10 @@ class App extends Component {
     this.state = {
       name: "",
       contact: [], // {phonenumber: "", email: "", link1:"", link2:""}
-      experience: [], // {[ [position: "", company: "", city: "", state: "", startDate: "", endDate: "", resposibilities: ["", "", ...]], ...]}
-      skills: [], // {[ [heading: "", skills["skill1", "skill2",..]], ...]}
-      education: [], // {[[institution: "", graduationDate: "", description: "", city: "", state: ""], ...]}
-      awards: [], // {[ [name: "", institution: "", date: ""], ...]}
+      experience: [], // {[ [id: "", position: "", company: "", city: "", state: "", startDate: "", endDate: "", resposibilities: ["", "", ...]], ...]}
+      skills: [], // {[ [id: "", heading: "", skills["skill1", "skill2",..]], ...]}
+      education: [], // {[[id: "", institution: "", graduationDate: "", description: "", city: "", state: ""], ...]}
+      awards: [], // {[ [id: "", name: "", institution: "", date: ""], ...]}
     };
 
     this.setName = this.addName.bind(this);
@@ -24,6 +24,8 @@ class App extends Component {
     this.setSkills = this.addSkills.bind(this);
     this.setEducation = this.addEducation.bind(this);
     this.setAwards = this.addAwards.bind(this);
+
+    this.removeAwards = this.removeItem.bind(this);
   }
 
   //setter functions
@@ -90,6 +92,7 @@ class App extends Component {
   }
 
   addEducation(e) {
+    //this.setState({ education: [...this.state.education, this.addItem(e)] });
     e.preventDefault();
 
     let tempEducation = {
@@ -113,42 +116,32 @@ class App extends Component {
   }
 
   addAwards(e) {
+    this.setState({ awards: [...this.state.awards, this.addItem(e)] });
+  }
+
+  addItem(e) {
     e.preventDefault();
-    /*
-    let tempAward = {
-      id: uniqid(),
-      name: this.state.awards.name,
-      institution: this.state.awards.institution,
-      date: this.state.awards.date,
-    };
 
-    tempAward[e.target.name] = e.target.value;
-    
+    let newItem = { id: uniqid() };
 
-    this.setState({
-      name: this.state.name,
-      contact: this.state.contact,
-      experience: this.state.experience,
-      skills: this.state.skills,
-      education: this.state.education,
-      awards: tempAward,
-    });
-
-    */
-    // {[ [name: "", institution: "", date: ""], ...]}
-    this.setState({
-      awards: [
-        ...this.state.awards,
-        {
-          id: uniqid(),
-          name: e.target.name.value,
-          institution: e.target.institution.value,
-          date: e.target.date.value
-        },
-      ],
-    });
+    //converts e.target from HTMLCollection to array so we can loop over it
+    [...e.target]
+      //then runs over each one except for the last item because last item is the edit button
+      .slice(0, [...e.target].length - 1)
+      .forEach((item) => (newItem[item.name] = item.value));
 
     e.target.reset();
+
+    return newItem;
+  }
+
+  removeItem(list, id) {
+    let newList = [];
+    list.forEach((item) => {
+      if (item.id !== id) newList = [...newList, item];
+    });
+
+    return newList;
   }
 
   render() {
@@ -168,7 +161,7 @@ class App extends Component {
         />
 
         {/* Output */}
-        <CV cv={this.state} />
+        <CV cv={this.state} removeAwards={this.removeAwards} />
       </div>
     );
   }

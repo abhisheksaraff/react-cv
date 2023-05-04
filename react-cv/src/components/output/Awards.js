@@ -4,6 +4,8 @@ import React, { Component } from "react";
 class Awards extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { isShowing: false };
   }
 
   addPipeline(name, institution) {
@@ -22,7 +24,15 @@ class Awards extends Component {
       <ul>
         {this.props.awards.map((award) => {
           return (
-            <li key={award.id}>
+            <li
+              key={award.id}
+              onMouseEnter={() => {
+                this.setState({ isShowing: true });
+              }}
+              onMouseLeave={() => {
+                this.setState({ isShowing: false });
+              }}
+            >
               {award.name}
 
               {this.addPipeline(award.name, award.institution) && <> | </>}
@@ -30,6 +40,7 @@ class Awards extends Component {
               {award.institution}
               <> </>
               {award.date}
+              {this.state.isShowing && <button onClick={() => this.props.removeAwards(this.props.awards, award.id)}>-</button>}
             </li>
           );
         })}
