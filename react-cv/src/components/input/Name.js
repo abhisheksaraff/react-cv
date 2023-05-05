@@ -8,6 +8,7 @@ class Name extends Component {
   render() {
     return (
       <div>
+        <h4>Name</h4>
         <form onSubmit={this.props.setName}>
           <label>
             Name :

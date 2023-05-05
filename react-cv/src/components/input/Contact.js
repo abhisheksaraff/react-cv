@@ -8,6 +8,7 @@ class Contact extends Component {
   render() {
     return (
       <div>
+        <h4>Contact</h4>
         <form onSubmit={this.props.setContact}>
           <label>
             Phone Number :

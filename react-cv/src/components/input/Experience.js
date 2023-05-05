@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+//{[ [id: "", position: "", company: "", city: "", state: "", startDate: "", endDate: "", resposibilities: ["", "", ...]], ...]}
 class Experience extends Component {
   constructor(props) {
     super(props);
@@ -8,10 +9,35 @@ class Experience extends Component {
   render() {
     return (
       <div>
-        <form>
+        <h4>Experience</h4>
+        <form  onSubmit={this.props.setExperience} >
           <label>
-            Experience :
-            <input type="text" onChange={this.props.setExperience} />
+            Position :
+            <input type="text"/>
+          </label>
+          <label>
+            Company :
+            <input type="text"/>
+          </label>
+          <label>
+            City :
+            <input type="text"/>
+          </label>
+          <label>
+            State :
+            <input type="text"/>
+          </label>
+          <label>
+            Start Date :
+            <input type="text"/>
+          </label>
+          <label>
+            End Date :
+            <input type="text"/>
+          </label>
+          <label>
+            Resposibilities :
+            <input type="text"/>
           </label>
         </form>
       </div>

@@ -8,6 +8,7 @@ class Awards extends Component {
   render() {
     return (
       <div>
+        <h4>Awards</h4>
         <form onSubmit={this.props.setAwards}>
           <label>
             Name :

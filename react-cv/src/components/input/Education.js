@@ -8,6 +8,7 @@ class Education extends Component {
   render() {
     return (
       <div>
+        <h4>Education</h4>
         <form onChange={this.props.setEducation}>
           <label>
             Institution :

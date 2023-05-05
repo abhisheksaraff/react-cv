@@ -8,6 +8,7 @@ class Skills extends Component {
   render() {
     return (
       <div>
+        <h4>Skills</h4>
         <form onSubmit={this.props.setSkills} >
           <label>
             Heading :

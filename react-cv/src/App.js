@@ -74,18 +74,6 @@ class App extends Component {
 
   addSkills(e) {
     this.setState({ skills: [...this.state.skills, this.addItem(e)] });
-    /*
-    e.preventDefault();
-
-    this.setState({
-      name: this.state.name,
-      contact: this.state.contact,
-      experience: this.state.experience,
-      skills: e.target.value,
-      education: this.state.education,
-      awards: this.state.awards,
-    });
-    */
   }
 
   addEducation(e) {
