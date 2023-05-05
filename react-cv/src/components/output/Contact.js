@@ -3,11 +3,25 @@ import React, { Component } from "react";
 class Contact extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { isShowing: true };
+
+    this.onClickEvent = () => {
+      this.setState({ isShowing: false });
+      this.props.deleteContact();
+    };
   }
 
   render() {
     return (
-      <div>
+      <div
+        onMouseEnter={() => {
+          this.setState({ isShowing: true });
+        }}
+        onMouseLeave={() => {
+          this.setState({ isShowing: false });
+        }}
+      >
         {this.props.contact.phone}
 
         {/* checks if either email or phone contain something, then renders a '|' after phone number*/}
@@ -36,6 +50,7 @@ class Contact extends Component {
         >
           {this.props.contact.onlineProfile}
         </a>
+        {this.state.isShowing && <button onClick={this.onClickEvent}>-</button>}
       </div>
     );
   }

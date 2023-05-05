@@ -26,7 +26,7 @@ class Name extends Component {
       >
         {this.props.name}
         {this.state.isShowing && <button onClick={this.onClickEvent}>-</button>}
-      </div>
+        </div>
     );
   }
 }

@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       name: "",
-      contact: [], // {phonenumber: "", email: "", link1:"", link2:""}
+      contact: {}, // {phone: "", email: "", onlineProfile:""}
       experience: [], // {[ [id: "", position: "", company: "", city: "", state: "", startDate: "", endDate: "", resposibilities: ["", "", ...]], ...]}
       skills: [], // {[ [id: "", heading: "", skills["skill1", "skill2",..]], ...]}
       education: [], // {[[id: "", institution: "", graduationDate: "", description: "", city: "", state: ""], ...]}
@@ -45,7 +45,15 @@ class App extends Component {
   }
 
   addContact(e) {
-    this.setState({ education: [...this.state.education, this.addItem(e)] });
+    e.preventDefault();
+    this.setState({
+      contact: {
+        phone: e.target.phone.value,
+        email: e.target.email.value,
+        onlineProfile: e.target.onlineProfile.value,
+      },
+    });
+    e.target.reset();
     /*
     e.preventDefault();
 
@@ -69,7 +77,7 @@ class App extends Component {
   }
 
   addExperience(e) {
-    this.setState({ education: [...this.state.education, this.addItem(e)] });
+    this.setState({ experience: this.addItem(e) });
     /*
     e.preventDefault();
 
@@ -85,7 +93,7 @@ class App extends Component {
   }
 
   addSkills(e) {
-    this.setState({ education: [...this.state.education, this.addItem(e)] });
+    this.setState({ skills: [...this.state.skills, this.addItem(e)] });
     /*
     e.preventDefault();
 
@@ -134,7 +142,9 @@ class App extends Component {
     this.setState({ name: "" });
   }
 
-  removeContact(e) {}
+  removeContact(e) {
+    this.setState({ contact: {} });
+  }
   removeExperience(e) {}
   removeSkills(e) {}
   removeEducation(e) {}
