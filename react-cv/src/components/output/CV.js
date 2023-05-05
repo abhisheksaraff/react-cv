@@ -16,11 +16,11 @@ class CV extends Component {
 
     return (
       <div>
-        <Name name={this.props.cv.name} />
-        <Contact contact={this.props.cv.contact} />
-        <Experience experience={this.props.cv.experience} />
-        <Skills skills={this.props.cv.skills} />
-        <Education education={this.props.cv.education} />
+        <Name name={this.props.cv.name} deleteName={this.props.deleteName}/>
+        <Contact contact={this.props.cv.contact} deleteContact={this.props.deleteContact}/>
+        <Experience experience={this.props.cv.experience} deleteExperience={this.props.deleteExperience}/>
+        <Skills skills={this.props.cv.skills} deleteSkills={this.props.deleteSkills}/>
+        <Education education={this.props.cv.education} deleteEducation={this.props.deleteEducation}/>
         <Awards awards={this.props.cv.awards} deleteAwards={this.props.deleteAwards}/>
       </div> 
     );

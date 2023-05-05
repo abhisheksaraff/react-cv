@@ -25,6 +25,11 @@ class App extends Component {
     this.setEducation = this.addEducation.bind(this);
     this.setAwards = this.addAwards.bind(this);
 
+    this.deleteName = this.removeName.bind(this);
+    this.deleteContact = this.removeContact.bind(this);
+    this.deleteExperience = this.removeExperience.bind(this);
+    this.deletSkills = this.removeSkills.bind(this);
+    this.deleteEducation = this.removeEducation.bind(this);
     this.deleteAwards = this.removeAwards.bind(this);
   }
 
@@ -32,19 +37,16 @@ class App extends Component {
   addName(e) {
     e.preventDefault();
 
-    let tempName = e.target.value;
-
     this.setState({
-      name: tempName,
-      contact: this.state.contact,
-      experience: this.state.experience,
-      skills: this.state.skills,
-      education: this.state.education,
-      awards: this.state.awards,
+      name: e.target.name.value,
     });
+
+    e.target.reset();
   }
 
   addContact(e) {
+    this.setState({ education: [...this.state.education, this.addItem(e)] });
+    /*
     e.preventDefault();
 
     let tempContact = {
@@ -63,9 +65,12 @@ class App extends Component {
       education: this.state.education,
       awards: this.state.awards,
     });
+    */
   }
 
   addExperience(e) {
+    this.setState({ education: [...this.state.education, this.addItem(e)] });
+    /*
     e.preventDefault();
 
     this.setState({
@@ -76,9 +81,12 @@ class App extends Component {
       education: this.state.education,
       awards: this.state.awards,
     });
+    */
   }
 
   addSkills(e) {
+    this.setState({ education: [...this.state.education, this.addItem(e)] });
+    /*
     e.preventDefault();
 
     this.setState({
@@ -89,10 +97,12 @@ class App extends Component {
       education: this.state.education,
       awards: this.state.awards,
     });
+    */
   }
 
   addEducation(e) {
-    //this.setState({ education: [...this.state.education, this.addItem(e)] });
+    this.setState({ education: [...this.state.education, this.addItem(e)] });
+    /*
     e.preventDefault();
 
     let tempEducation = {
@@ -113,11 +123,21 @@ class App extends Component {
       education: tempEducation,
       awards: this.state.awards,
     });
+    */
   }
 
   addAwards(e) {
     this.setState({ awards: [...this.state.awards, this.addItem(e)] });
   }
+
+  removeName(e) {
+    this.setState({ name: "" });
+  }
+
+  removeContact(e) {}
+  removeExperience(e) {}
+  removeSkills(e) {}
+  removeEducation(e) {}
 
   removeAwards(e) {
     this.setState({
@@ -170,7 +190,15 @@ class App extends Component {
         />
 
         {/* Output */}
-        <CV cv={this.state} deleteAwards={this.deleteAwards} />
+        <CV
+          cv={this.state}
+          deleteName={this.deleteName}
+          deleteContact={this.deleteContact}
+          deleteExperience={this.deleteExperience}
+          deleteSkills={this.deleteSkills}
+          deleteEducation={this.deleteEducation}
+          deleteAwards={this.deleteAwards}
+        />
       </div>
     );
   }

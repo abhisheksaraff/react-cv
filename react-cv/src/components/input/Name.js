@@ -8,11 +8,12 @@ class Name extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.props.setName}>
           <label>
             Name :
-            <input type="text" onChange={this.props.setName} />
+            <input name="name" type="text" />
           </label>
+          <button type="submit">Add</button>
         </form>
       </div>
     );
