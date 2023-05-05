@@ -4,7 +4,7 @@ class Contact extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { isShowing: true };
+    this.state = { isShowing: false };
 
     this.onClickEvent = () => {
       this.setState({ isShowing: false });

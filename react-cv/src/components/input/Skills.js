@@ -8,11 +8,16 @@ class Skills extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.props.setSkills} >
+          <label>
+            Heading :
+            <input name="heading" type="text"/>
+          </label>
           <label>
             Skills :
-            <input type="text" onChange={this.props.setSkills} />
+            <input name="skills" type="text"/>
           </label>
+          <button type="submit">Add</button>
         </form>
       </div>
     );

@@ -28,7 +28,7 @@ class App extends Component {
     this.deleteName = this.removeName.bind(this);
     this.deleteContact = this.removeContact.bind(this);
     this.deleteExperience = this.removeExperience.bind(this);
-    this.deletSkills = this.removeSkills.bind(this);
+    this.deleteSkills = this.removeSkills.bind(this);
     this.deleteEducation = this.removeEducation.bind(this);
     this.deleteAwards = this.removeAwards.bind(this);
   }
@@ -54,26 +54,6 @@ class App extends Component {
       },
     });
     e.target.reset();
-    /*
-    e.preventDefault();
-
-    let tempContact = {
-      phone: this.state.contact.phone,
-      email: this.state.contact.email,
-      onlineProfile: this.state.contact.onlineProfile,
-    };
-
-    tempContact[e.target.name] = e.target.value;
-
-    this.setState({
-      name: this.state.name,
-      contact: tempContact,
-      experience: this.state.experience,
-      skills: this.state.skills,
-      education: this.state.education,
-      awards: this.state.awards,
-    });
-    */
   }
 
   addExperience(e) {
@@ -138,15 +118,21 @@ class App extends Component {
     this.setState({ awards: [...this.state.awards, this.addItem(e)] });
   }
 
-  removeName(e) {
+  removeName() {
     this.setState({ name: "" });
   }
 
-  removeContact(e) {
+  removeContact() {
     this.setState({ contact: {} });
   }
   removeExperience(e) {}
-  removeSkills(e) {}
+
+  removeSkills(e) {
+    this.setState({
+      skills: this.removeItem([...this.state.skills], e.target.name),
+    });
+  }
+
   removeEducation(e) {}
 
   removeAwards(e) {
