@@ -25,7 +25,7 @@ class App extends Component {
     this.setEducation = this.addEducation.bind(this);
     this.setAwards = this.addAwards.bind(this);
 
-    this.removeAwards = this.removeItem.bind(this);
+    this.deleteAwards = this.removeAwards.bind(this);
   }
 
   //setter functions
@@ -119,6 +119,12 @@ class App extends Component {
     this.setState({ awards: [...this.state.awards, this.addItem(e)] });
   }
 
+  removeAwards(e) {
+    this.setState({
+      awards: this.removeItem([...this.state.awards], e.target.name),
+    });
+  }
+
   addItem(e) {
     e.preventDefault();
 
@@ -135,10 +141,13 @@ class App extends Component {
     return newItem;
   }
 
+  //removes item with the specified id removed and returns the rest of the array
   removeItem(list, id) {
     let newList = [];
     list.forEach((item) => {
-      if (item.id !== id) newList = [...newList, item];
+      if (item.id !== id) {
+        newList = [...newList, item];
+      }
     });
 
     return newList;
@@ -161,7 +170,7 @@ class App extends Component {
         />
 
         {/* Output */}
-        <CV cv={this.state} removeAwards={this.removeAwards} />
+        <CV cv={this.state} deleteAwards={this.deleteAwards} />
       </div>
     );
   }

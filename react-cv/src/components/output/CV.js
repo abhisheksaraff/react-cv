@@ -21,7 +21,7 @@ class CV extends Component {
         <Experience experience={this.props.cv.experience} />
         <Skills skills={this.props.cv.skills} />
         <Education education={this.props.cv.education} />
-        <Awards awards={this.props.cv.awards} removeAwards={this.props.removeAwards}/>
+        <Awards awards={this.props.cv.awards} deleteAwards={this.props.deleteAwards}/>
       </div> 
     );
   }

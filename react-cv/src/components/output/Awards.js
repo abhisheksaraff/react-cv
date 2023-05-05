@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-//awards: [], // {[ [name: "", institution: "", date: ""], ...]}
+//awards: [], // {[ [id: "", name: "", institution: "", date: ""], ...]}
 class Awards extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ class Awards extends Component {
               {award.institution}
               <> </>
               {award.date}
-              {this.state.isShowing && <button onClick={() => this.props.removeAwards(this.props.awards, award.id)}>-</button>}
+              {this.state.isShowing && <button name={award.id} onClick={(e) => this.props.deleteAwards(e)}>-</button>}
             </li>
           );
         })}
