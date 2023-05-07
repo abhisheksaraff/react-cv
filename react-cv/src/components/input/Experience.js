@@ -34,11 +34,13 @@ class Experience extends Component {
         endDate: e.target.endDate.value,
         responsibilities: newResponsibilites,
       };
-
       this.props.setExperience(newExperience);
 
       e.target.reset();
+      this.setDefautltState();
     };
+
+    this.setDefautltState = () => this.setState({ responsibilities: [{ id: uniqid(), responsibility: "" }] });
   }
 
   render() {

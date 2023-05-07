@@ -90,7 +90,7 @@ class App extends Component {
     */
   }
 
-  addAwards(e) {;
+  addAwards(e) {
     this.setState({ awards: [...this.state.awards, this.addItem(e)] });
   }
 
@@ -101,11 +101,16 @@ class App extends Component {
   removeContact() {
     this.setState({ contact: {} });
   }
-  removeExperience(e) {}
+
+  removeExperience(e) {
+    this.setState({
+      experience: this.removeItem(this.state.experience, e.target.name),
+    });
+  }
 
   removeSkills(e) {
     this.setState({
-      skills: this.removeItem([...this.state.skills], e.target.name),
+      skills: this.removeItem(this.state.skills, e.target.name),
     });
   }
 
@@ -113,7 +118,7 @@ class App extends Component {
 
   removeAwards(e) {
     this.setState({
-      awards: this.removeItem([...this.state.awards], e.target.name),
+      awards: this.removeItem(this.state.awards, e.target.name),
     });
   }
 

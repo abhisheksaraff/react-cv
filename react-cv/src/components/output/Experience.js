@@ -8,8 +8,7 @@ class Experience extends Component {
 
     this.state = { isShowing: false };
   }
-
-  //{[ [id: "", position: "", company: "", city: "", state: "", startDate: "", endDate: "", resposibilities: ["", "", ...]], ...]}
+  
   render() {
     let experience = this.props.experience;
 
@@ -22,8 +21,13 @@ class Experience extends Component {
               onMouseEnter={() => this.setState({ isShowing: true })}
               onMouseLeave={() => this.setState({ isShowing: false })}
             >
-              {job.position} <Date startDate={job.startDate} endDate={job.endDate}/>
-              {this.state.isShowing && <button>-</button>}
+              {job.position}{" "}
+              <Date startDate={job.startDate} endDate={job.endDate} />
+              {this.state.isShowing && (
+                <button name={job.id} onClick={this.props.deleteExperience}>
+                  -
+                </button>
+              )}
               <div>
                 {job.company} <Location city={job.city} state={job.state} />
               </div>
