@@ -56,20 +56,8 @@ class App extends Component {
     e.target.reset();
   }
 
-  addExperience(e) {
-    this.setState({ experience: this.addItem(e) });
-    /*
-    e.preventDefault();
-
-    this.setState({
-      name: this.state.name,
-      contact: this.state.contact,
-      experience: e.target.value,
-      skills: this.state.skills,
-      education: this.state.education,
-      awards: this.state.awards,
-    });
-    */
+  addExperience(newExperience) {
+    this.setState({ experience: [...this.state.experience, newExperience] });
   }
 
   addSkills(e) {
@@ -102,7 +90,7 @@ class App extends Component {
     */
   }
 
-  addAwards(e) {
+  addAwards(e) {;
     this.setState({ awards: [...this.state.awards, this.addItem(e)] });
   }
 

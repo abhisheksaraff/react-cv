@@ -1,13 +1,47 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import Location from "./Location";
+import Date from "./Date";
 
-class Experience extends Component    {
-    constructor(props){
-        super(props);
-    }
+class Experience extends Component {
+  constructor(props) {
+    super(props);
 
-    render(){
-        return <div>{this.props.experience}</div>;
-    }
+    this.state = { isShowing: false };
+  }
+
+  //{[ [id: "", position: "", company: "", city: "", state: "", startDate: "", endDate: "", resposibilities: ["", "", ...]], ...]}
+  render() {
+    let experience = this.props.experience;
+
+    return (
+      <ul>
+        {experience.map((job) => {
+          return (
+            <li
+              key={job.id}
+              onMouseEnter={() => this.setState({ isShowing: true })}
+              onMouseLeave={() => this.setState({ isShowing: false })}
+            >
+              {job.position} <Date startDate={job.startDate} endDate={job.endDate}/>
+              {this.state.isShowing && <button>-</button>}
+              <div>
+                {job.company} <Location city={job.city} state={job.state} />
+              </div>
+              <ul>
+                {job.responsibilities.map((responsiblity) => {
+                  return (
+                    <li key={responsiblity.id}>
+                      {responsiblity.responsibility}
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
 }
 
 export default Experience;

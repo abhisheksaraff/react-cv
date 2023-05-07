@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
 
-//{[ [id: "", position: "", company: "", city: "", state: "", startDate: "", endDate: "", resposibilities: ["", "", ...]], ...]}
 class Experience extends Component {
   constructor(props) {
     super(props);
@@ -15,23 +14,31 @@ class Experience extends Component {
           { id: uniqid(), responsibility: "" },
         ],
       });
-    }
+    };
 
     this.onClickEvent = (e) => {
       e.preventDefault();
 
-      console.log(e.target);
-
-      let tempResponsibilites = [...this.state.responsibilities];
-
-      tempResponsibilites.forEach((item) => {
-        item.responsibility= e.target.responsibilities.id.value;
+      let newResponsibilites = [...this.state.responsibilities];
+      newResponsibilites.forEach((item) => {
+        item.responsibility = e.target[item.id].value;
       });
 
-      console.log(tempResponsibilites);
+      let newExperience = {
+        id: uniqid(),
+        position: e.target.position.value,
+        company: e.target.company.value,
+        city: e.target.city.value,
+        state: e.target.state.value,
+        startDate: e.target.startDate.value,
+        endDate: e.target.endDate.value,
+        responsibilities: newResponsibilites,
+      };
+
+      this.props.setExperience(newExperience);
 
       e.target.reset();
-    }
+    };
   }
 
   render() {
@@ -65,17 +72,20 @@ class Experience extends Component {
           </label>
           <label>
             Resposibilities :
-            {this.state.responsibilities.map((responsibility) => {                
+            {this.state.responsibilities.map((responsibility) => {
+              /* returns an input field with a uniqid as it's name that can be used to acces it on Add button click (onClickEvent) */
               return (
                 <input
                   key={responsibility.id}
-                  name="responsibilities"
+                  name={responsibility.id}
                   type="text"
                 />
               );
             })}
           </label>
-          <button type="button" onClick={this.addResponsibilities}>+</button>
+          <button type="button" onClick={this.addResponsibilities}>
+            +
+          </button>
           <div>
             <button type="submit">Add</button>
           </div>
