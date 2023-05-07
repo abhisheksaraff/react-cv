@@ -16,7 +16,7 @@ class Name extends Component {
 
   render() {
     return (
-      <div
+      <h1
         onMouseEnter={() => {
           this.setState({ isShowing: true });
         }}
@@ -26,7 +26,7 @@ class Name extends Component {
       >
         {this.props.name}
         {this.state.isShowing && <button onClick={this.onClickEvent}>-</button>}
-        </div>
+        </h1>
     );
   }
 }
