@@ -21,8 +21,11 @@ class Experience extends Component {
 
       let newResponsibilites = [...this.state.responsibilities];
       newResponsibilites.forEach((item) => {
-        item.responsibility = e.target[item.id].value;
+          item.responsibility = e.target[item.id].value;
       });
+
+      //delete responsiblitlites with no data in them
+      newResponsibilites = newResponsibilites.filter((value, index, array) => value.responsibility !== "");
 
       let newExperience = {
         id: uniqid(),
@@ -40,7 +43,10 @@ class Experience extends Component {
       this.setDefautltState();
     };
 
-    this.setDefautltState = () => this.setState({ responsibilities: [{ id: uniqid(), responsibility: "" }] });
+    this.setDefautltState = () =>
+      this.setState({
+        responsibilities: [{ id: uniqid(), responsibility: "" }],
+      });
   }
 
   render() {
