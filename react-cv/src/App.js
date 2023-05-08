@@ -66,28 +66,6 @@ class App extends Component {
 
   addEducation(e) {
     this.setState({ education: [...this.state.education, this.addItem(e)] });
-    /*
-    e.preventDefault();
-
-    let tempEducation = {
-      institution: this.state.education.institution,
-      graduationDate: this.state.education.graduationDate,
-      description: this.state.education.description,
-      city: this.state.education.city,
-      state: this.state.education.state,
-    };
-
-    tempEducation[e.target.name] = e.target.value;
-
-    this.setState({
-      name: this.state.name,
-      contact: this.state.contact,
-      experience: this.state.experience,
-      skills: this.state.skills,
-      education: tempEducation,
-      awards: this.state.awards,
-    });
-    */
   }
 
   addAwards(e) {
@@ -114,7 +92,11 @@ class App extends Component {
     });
   }
 
-  removeEducation(e) {}
+  removeEducation(e) {
+    this.setState({
+      education: this.removeItem(this.state.education, e.target.name),
+    });
+  }
 
   removeAwards(e) {
     this.setState({

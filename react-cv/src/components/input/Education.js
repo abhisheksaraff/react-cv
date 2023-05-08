@@ -9,7 +9,7 @@ class Education extends Component {
     return (
       <div>
         <h4>Education</h4>
-        <form onChange={this.props.setEducation}>
+        <form onSubmit={this.props.setEducation}>
           <label>
             Institution :
             <input type="text" name="institution" />
@@ -30,6 +30,7 @@ class Education extends Component {
             State :
             <input type="text" name="state" />
           </label>
+          <button type="submit">Add</button>
         </form>
       </div>
     );
