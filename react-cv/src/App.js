@@ -24,6 +24,7 @@ class App extends Component {
     this.setSkills = this.addSkills.bind(this);
     this.setEducation = this.addEducation.bind(this);
     this.setAwards = this.addAwards.bind(this);
+    this.setDummyCV = this.addDummyCV.bind(this);
 
     this.deleteName = this.removeName.bind(this);
     this.deleteContact = this.removeContact.bind(this);
@@ -132,6 +133,152 @@ class App extends Component {
     return newList;
   }
 
+  addDummyCV() {
+    this.setState({
+      name: "Thor Odinson",
+      contact: {
+        phone: "(123)456-7890",
+        email: "thor@thunder.com",
+        onlineProfile: "www.thorodinson.com",
+      },
+      experience: [
+        {
+          id: "defaultId1",
+          position: "Manager",
+          company: "Big Bank",
+          city: "New York",
+          state: "NY",
+          startDate: "Mar 2023",
+          endDate: "Present",
+          responsibilities: [
+            {
+              id: "defaultId4",
+              responsibility:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt aliquip ex ea commodo consequat. ",
+            },
+            {
+              id: "defaultId5",
+              responsibility:
+                "Ut labore et dolore magna aliqua. Magna fringilla urna porttitor rhoncus dolor purus non enim.",
+            },
+            {
+              id: "defaultId6",
+              responsibility:
+                "Leo duis ut diam quam nulla porttitor massa id. Arcu non odio euismod lacinia at quis risus sed.",
+            },
+          ],
+        },
+        {
+          id: "defaultId2",
+          position: "Lead",
+          company: "Software Company",
+          city: "Los Angeles",
+          state: "CA",
+          startDate: "Aug 2018",
+          endDate: "Mar 2023",
+          responsibilities: [
+            {
+              id: "defaultI4",
+              responsibility:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt aliquip ex ea commodo consequat. ",
+            },
+            {
+              id: "defaultId5",
+              responsibility:
+                "Ut labore et dolore magna aliqua. Magna fringilla urna porttitor rhoncus dolor purus non enim.",
+            },
+            {
+              id: "defaultId6",
+              responsibility:
+                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            },
+            {
+              id: "defaultId7",
+              responsibility:
+                "Leo duis ut diam quam nulla porttitor massa id. Arcu non odio euismod lacinia at quis risus sed.",
+            },
+          ],
+        },
+        {
+          id: "defaultId3",
+          position: "Developer",
+          company: "Local Company",
+          city: "Pensacola",
+          state: "FL",
+          startDate: "Feb 2014",
+          endDate: "Aug 2018",
+          responsibilities: [
+            {
+              id: "defaultId4",
+              responsibility:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt aliquip ex ea commodo consequat. ",
+            },
+            {
+              id: "defaultId5",
+              responsibility:
+                "Ut labore et dolore magna aliqua. Magna fringilla urna porttitor rhoncus dolor purus non enim.",
+            },
+            {
+              id: "defaultId6",
+              responsibility:
+                "Leo duis ut diam quam nulla porttitor massa id. Arcu non odio euismod lacinia at quis risus sed.",
+            },
+          ],
+        },
+      ],
+      skills: [
+        {
+          id: "defaultId1",
+          heading: "Platforms",
+          skills: "Windows, Mac, iOS, Android, Linux",
+        },
+        {
+          id: "defaultId2",
+          heading: "Languages",
+          skills: "Java, Javascript, HTML, CSS, SQL, C, C++",
+        },
+        {
+          id: "defaultId3",
+          heading: "Frameworks",
+          skills:
+            "React, Node.js, MongoDB, Express.js, Spring, Springboot, Git, Bootstrap, Firebase, RestAPI",
+        },
+      ],
+      education: [
+        {
+          id: "defaultId1",
+          institution: "MSc CS",
+          graduationDate: "Sept 2027",
+          description: "Masters in Computer Science, with High Honours",
+          city: "Toronto",
+          state: "ON",
+        },
+        {
+          id: "defaultId2",
+          institution: "BSc CS",
+          graduationDate: "May 2023",
+          description: "Bachelors in Computer Science, with High Honours",
+          city: "Vancouver",
+          state: "BC",
+        },
+      ],
+      awards: [
+        {
+          id: "defaultId1",
+          name: "Outstanding Performer",
+          institution: "Excellent Institution",
+          date: "03/21/2018",
+        },
+        {
+          id: "defaultId2",
+          name: "The Go-Getter",
+          institution: "Non-Profit Organization",
+          date: "11/01/2021",
+        },
+      ],
+    });
+  }
+
   render() {
     return (
       <div>
@@ -147,6 +294,8 @@ class App extends Component {
             setAwards: this.setAwards,
           }}
         />
+
+        <button onClick={this.setDummyCV}>Add a Default Resume</button>
 
         {/* Output */}
         <CV

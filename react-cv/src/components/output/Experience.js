@@ -32,10 +32,11 @@ class Experience extends Component {
                 {job.company} <Location city={job.city} state={job.state} />
               </div>
               <ul>
-                {job.responsibilities.map((responsiblity) => {
+                {job.responsibilities.map((responsibility) => {
                   return (
-                    <li key={responsiblity.id}>
-                      {responsiblity.responsibility}
+                    <li key={responsibility.id}>
+                      {console.log(responsibility)}
+                      {responsibility.responsibility}
                     </li>
                   );
                 })}

@@ -50,6 +50,8 @@ class Experience extends Component {
       };
       this.props.setExperience(newExperience);
 
+      console.log(newExperience)
+
       e.target.reset();
       this.setDefautltState();
     };
