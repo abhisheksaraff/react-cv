@@ -16,16 +16,27 @@ class Experience extends Component {
       });
     };
 
+    this.removeResponsibilities = () => {
+      if (this.state.responsibilities.length !== 1) {
+        this.setState({
+          //returns a new array of responsibilities with everything except for the last element(text field) 
+          responsibilities: this.state.responsibilities.splice(0, this.state.responsibilities.length-1),
+        });
+      }
+    };
+
     this.onClickEvent = (e) => {
       e.preventDefault();
 
       let newResponsibilites = [...this.state.responsibilities];
       newResponsibilites.forEach((item) => {
-          item.responsibility = e.target[item.id].value;
+        item.responsibility = e.target[item.id].value;
       });
 
       //delete responsiblitlites with no data in them
-      newResponsibilites = newResponsibilites.filter((value, index, array) => value.responsibility !== "");
+      newResponsibilites = newResponsibilites.filter(
+        (value, index, array) => value.responsibility !== ""
+      );
 
       let newExperience = {
         id: uniqid(),
@@ -91,6 +102,9 @@ class Experience extends Component {
               );
             })}
           </label>
+          <button type="button" onClick={this.removeResponsibilities}>
+            -
+          </button>
           <button type="button" onClick={this.addResponsibilities}>
             +
           </button>
