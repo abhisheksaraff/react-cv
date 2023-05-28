@@ -4,7 +4,7 @@ class Name extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { isShowing: false };
+    this.state = { isShowing: false};
 
     this.onClickEvent = () => {
       this.props.deleteName();
@@ -26,7 +26,7 @@ class Name extends Component {
       >
         {this.props.name}
         {this.state.isShowing && <button onClick={this.onClickEvent}>-</button>}
-        </h1>
+      </h1>
     );
   }
 }

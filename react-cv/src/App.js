@@ -133,6 +133,7 @@ class App extends Component {
     return newList;
   }
 
+  //adds a dummy cv to the dom
   addDummyCV() {
     this.setState({
       name: "Thor Odinson",
@@ -267,13 +268,13 @@ class App extends Component {
           id: "defaultId1",
           name: "Outstanding Performer",
           institution: "Excellent Institution",
-          date: "03/21/2018",
+          date: "Mar 2018",
         },
         {
           id: "defaultId2",
           name: "The Go-Getter",
           institution: "Non-Profit Organization",
-          date: "11/01/2021",
+          date: "Nov 2021",
         },
       ],
     });

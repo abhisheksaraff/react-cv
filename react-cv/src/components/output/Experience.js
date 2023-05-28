@@ -6,7 +6,7 @@ class Experience extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { isShowing: false };
+    this.state = { isShowing: false};
   }
   
   render() {
