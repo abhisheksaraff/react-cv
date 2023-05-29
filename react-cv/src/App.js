@@ -133,7 +133,7 @@ class App extends Component {
     return newList;
   }
 
-  //adds a dummy cv to the dom
+  //adds a dummy cv to the CS section
   addDummyCV() {
     this.setState({
       name: "Thor Odinson",
